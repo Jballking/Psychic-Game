@@ -15,28 +15,57 @@
     <p id="losses-text"></p>
     <p id="Guess-counter"></p>
     <p id="userchoice-text"></p>
+    <p id="remaining"></p>
 </div>
 
 
 <script type="text/javascript">
     var directionsText = document.getElementById("directions-text");
     var computeroptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    var left = 9
     var wins = 0;
     var losses = 0;
+    var guess = 0;
     var userChoiceText = document.getElementById("userchoice-text");
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
+    var guesscount = document.getElementById("Guess-counter")
+    var guessleft = document.getElementById("remaining")
 
     document.onkeyup = function(event) {
         var userGuess = event.key;
         var computerGuess = computeroptions[Math.floor(Math.random() * computeroptions.length)];
-
-        directionsText.textContent = "";
-
+        console.log(computerGuess)
+        guesscount.textContent = "total: " + guess;
         userChoiceText.textContent = "You chose: " + userGuess;
         winsText.textContent = "wins: " + wins;
         lossesText.textContent = "losses: " + losses;
+        guessleft.textContent = "remaining: " + left;
+
+        
+        if (userGuess === computerGuess) {
+            wins++;
         }
+        else {
+            (userChoiceText+userGuess)
+        }
+
+        if (guess === 9) {
+            losses++;
+        }
+        else {
+            guess++;
+        }
+        if (left === 0) {
+            lossess++;
+        }
+        else if (userGuess === userGuess) {
+            left--;
+        }
+
+
+
+    }
 
 </script> 
 
